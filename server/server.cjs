@@ -4,6 +4,8 @@ const cors = require("cors");
 const router = require("./router/router.cjs");
 const db = require("./db/db.cjs");
 require("dotenv").config(); // file for protecting the info
+const ruta = require("../api.cjs")
+
 
 const app = express();
 
@@ -14,6 +16,7 @@ const env = process.env;
 const PORT = env.PORT;;
 
 app.use("/api", router);
+app.use("/", ruta)
 
 app.listen(PORT, () => {
   console.log("Server Listening on PORT:" + PORT);
