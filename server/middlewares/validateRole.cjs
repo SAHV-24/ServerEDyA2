@@ -1,7 +1,7 @@
 const { response } = require("express");
-const jwt = require("jwt-client");
+const jwt = require("jsonwebtoken")
 
-export function validateSuperPrivileges(req, res = response, next) {
+function validateRole(req, res = response, next) {
   // valida si el rol es el correcto
   const token = req.header("jwt-token");
   try {

@@ -7,6 +7,7 @@ const citasController = require("../controllers/citasController.cjs");
 const usuariosController = require("../controllers/usuariosController.cjs");
 const contratistasController = require("../controllers/contratistasController.cjs");
 const validateRole = require("../middlewares/validateRole.cjs");
+const { default: generateJWT } = require("../JWT/generateJWT.cjs");
 
 router.post("/search", [validateRole], contratistasController.search);
 
@@ -67,6 +68,21 @@ router.post(
   [validateRole],
   citasController.insert
 );
+
+router.post("/login",async (req,res)=>{
+
+  const{username,password}  = req.body
+
+  if(username == "sergio" && password ){
+
+    const response = await generateJWT(1234, username, password)
+
+  }
+
+
+
+})
+
 
 router.put(
   "/Usuarios/update/:id",
