@@ -10,7 +10,9 @@ export function validateSuperPrivileges(req, res = response, next) {
     if (role !== "ADMIN" || role != "CLIENT") {
       res
         .status(500)
-        .json("No tiene los permisos suficientes como para acceder a esta funcionalidad");
+        .json(
+          "No tiene los permisos suficientes como para acceder a esta funcionalidad"
+        );
     } else {
       next();
     }
@@ -20,3 +22,5 @@ export function validateSuperPrivileges(req, res = response, next) {
       .json({ message: "Hubo un error tratando de leer el token" });
   }
 }
+
+module.exports = validateRole;
